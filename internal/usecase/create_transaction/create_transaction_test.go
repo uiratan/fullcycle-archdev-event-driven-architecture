@@ -6,6 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/internal/event"
+	"github.com/uiratan/fullcycle-archdev-microservices/pkg/events"
 )
 
 type TransactionGatewayMock struct {
@@ -53,7 +55,10 @@ func TestCreateTransactionUseCase_Execute(t *testing.T) {
 		Amount:        100,
 	}
 
-	uc := NewCreateTransactionUseCase(mockTransaction, mockAccount)
+	dispatcher := events.NewEventDispatcher()
+	event := event.NewTransactionCreated()
+
+	uc := NewCreateTransactionUseCase(mockTransaction, mockAccount, dispatcher, event)
 	output, err := uc.Execute(inputDto)
 
 	assert.Nil(t, err)
