@@ -1,4 +1,4 @@
-package createaccount
+package create_account
 
 import (
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
