@@ -1,4 +1,11 @@
 [Repositório do Curso](https://github.com/devfullcycle/fc-eda/tree/main)
+# Eventos
+- Evento (carregar dados)
+- Operações que serão executadas quando um evento é chamado
+- Gegerenciador dos nossos eventos/operações
+  - Registrar os eventos e suas operações
+  - Despachar / Fire no evento para que suas operações sejam executadas
+
 
 # C4 System Architecture Model
 
