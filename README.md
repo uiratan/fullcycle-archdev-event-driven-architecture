@@ -109,7 +109,7 @@ Name: Go Test Explorer
 ### Go Install/Update tools
 ```
 ctrl + shift + p
-```` 
+```
 
 ![alt text](image-1.png)
 
