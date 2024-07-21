@@ -25,12 +25,12 @@ services:
     ports:
       - "3306:3306"
 
-  app-balance:
+  app-balances:
     build: .
-    container_name: app-balance
+    container_name: app-balances
     platform: linux/amd64
     volumes:
-      - ./balance:/app
+      - ./balances:/app
     depends_on:
       - mysql-balance
     ports:

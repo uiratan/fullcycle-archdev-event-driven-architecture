@@ -113,3 +113,52 @@ ctrl + shift + p
 
 ![alt text](image-1.png)
 
+# Desafio
+Desenvolva um microsserviço que seja capaz de receber via Kafka os eventos gerados pelo microsserviço "Wallet Core" e persistir no banco de dados os balances atualizados para cada conta.
+
+Crie um endpoint: `/balances/{account_id}` que exibe o balance atualizado.
+
+## Requisitos para entrega:
+- Tudo deve rodar via Docker / Docker-compose
+- Com um único docker-compose up -d todos os microsserviços, incluindo o da wallet core precisam estar disponíveis para que possamos fazer a correção.
+- Não esqueça de rodar migrations e popular dados fictícios em ambos bancos de dados (wallet core e o microsserviço de balances) de forma automática quando os serviços subirem.
+- Gere o arquivo ".http" para realizarmos as chamadas em seu microsserviço da mesma forma que fizemos no microsserviço "wallet core"
+- Disponibilize o microsserviço na porta: 3003.
+
+## Rodando as aplicações
+
+Executar `docker compose up --build` na pasta principal.
+
+### Microsserviço wallet-core
+
+Acessar o container
+
+```sh
+docker compose exec app-wallet-core bash
+```
+
+Rodar a aplicação
+```sh
+go run cmd/walletcore/main.go
+```
+
+As tabelas serão criadas e populadas e a aplicação estará rodando na porta `8080`.
+
+### Microsserviço balances
+
+Acessar o container
+
+```sh
+docker compose exec app-balances bash
+```
+
+Rodar a aplicação
+```sh
+go run cmd/balances/main.go
+```
+
+As tabelas serão criadas e populadas e a aplicação estará rodando na porta `3003`.
+
+### Requisições
+Os dois serviços já tem seu arquivo de `api/client.http` já com os `IDs` corretos, mas nada impede te criar novos registros e usar os mesmos.
+
