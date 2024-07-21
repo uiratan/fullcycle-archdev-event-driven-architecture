@@ -8,7 +8,8 @@ import (
 )
 
 type WebServer struct {
-	Router        *chi.Mux
+	// Router        *chi.Mux
+	Router        chi.Router
 	Handlers      map[string]http.HandlerFunc
 	WebServerPort string
 }
@@ -21,9 +22,10 @@ func NewWebServer(webServerPort string) *WebServer {
 	}
 }
 
-func (s *WebServer) AddHandler(path string, handler http.HandlerFunc) *WebServer {
+// func (s *WebServer) AddHandler(path string, handler http.HandlerFunc) *WebServer {
+func (s *WebServer) AddHandler(path string, handler http.HandlerFunc) {
 	s.Handlers[path] = handler
-	return s
+	// return s
 }
 
 func (s *WebServer) Start() {
