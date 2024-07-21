@@ -1,45 +1,40 @@
 services:
 
-  goapp:
+  wallet-core:
     build: .
+    container_name: wallet-core
     platform: linux/amd64
-    container_name: eda-goapp
     volumes:
-      - .:/app
+      - ./wallet-core:/app
+    depends_on:
+      - mysql-wallet
     ports:
       - 8080:8080
 
-  mysql:
+  mysql-wallet:
     image: mysql:8
     platform: linux/amd64
     command: --innodb-use-native-aio=0
-    container_name: mysql
+    container_name: mysql-wallet
     restart: always
     tty: true
-    volumes:
-      - .docker/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=wallet
       - MYSQL_PASSWORD=root
-    # networks:
-    #   - app-network
     ports:
       - "3306:3306"
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
     container_name: zookeeper
+    platform: linux/amd64
     ports:
       - 2181:2181
     environment:
       TZ: Sao_Paulo/Brazil
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
-    volumes: 
-      - .docker/zoo/data:/var/lib/zookeeper/data
-      - .docker/zoo/log:/var/lib/zookeeper/log
-
 
   kafka:
     image: "confluentinc/cp-enterprise-kafka:6.1.0"
@@ -47,9 +42,9 @@ services:
     depends_on:
       - zookeeper
     ports:
-      # Exposes 9092 for external connections to the broker
-      # Use kafka:29092 for connections internal on the docker network
-      # See https://rmoff.net/2018/08/02/kafka-listeners-explained/ for details
+    # Exposes 9092 for external connections to the broker
+    # Use kafka:29092 for connections internal on the docker network
+    # See https://rmoff.net/2018/08/02/kafka-listeners-explained/ for details
       - '9092:9092'
     environment:
       TZ: Sao_Paulo/Brazil
@@ -64,8 +59,6 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 100
       CONFLUENT_METRICS_ENABLE: 'false'
-    volumes: 
-      - .docker/broker/data:/var/lib/kafka/data      
 
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.3.0
@@ -81,5 +74,4 @@ services:
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
-      PORT: 9021  
-
+      PORT: 9021
