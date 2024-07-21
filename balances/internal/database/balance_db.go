@@ -20,7 +20,7 @@ func (b *BalanceDB) FindByAccountID(accountID string) (*entity.Balance, error) {
 	var balance entity.Balance
 
 	// stmt, err := b.DB.Prepare("SELECT * FROM balances WHERE account_id = ? ORDER BY created_at DESC LIMIT 1")
-	stmt, err := b.DB.Prepare("SELECT * FROM balances WHERE account_id = ?")
+	stmt, err := b.DB.Prepare("SELECT * FROM balances WHERE account_id = ? ORDER BY created_at DESC LIMIT 1")
 	if err != nil {
 		return nil, err
 	}
