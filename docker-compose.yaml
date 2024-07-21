@@ -1,9 +1,18 @@
 services:
 
-  db:
+  goapp:
+    build: .
+    platform: linux/amd64
+    container_name: eda-goapp
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+
+  mysql:
     image: mysql:8
     command: --innodb-use-native-aio=0
-    container_name: db
+    container_name: mysql
     restart: always
     tty: true
     volumes:
@@ -12,11 +21,12 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=wallet
       - MYSQL_PASSWORD=root
-    networks:
-      - app-network
+    # networks:
+    #   - app-network
     ports:
       - "3306:3306"
 
-networks:
-  app-network:
-    driver: bridge
+
+# networks:
+#   app-network:
+#     driver: bridge
