@@ -173,5 +173,5 @@ mysql -uroot -p balances
 ```
 
 ### Requisições
-Os dois serviços já tem seu arquivo de `api/client.http` já com os `IDs` corretos, mas nada impede te criar novos registros e usar os mesmos.
+Os dois serviços possuem um arquivo `api/client.http` já com os `IDs` populados no banco para testes.
 
