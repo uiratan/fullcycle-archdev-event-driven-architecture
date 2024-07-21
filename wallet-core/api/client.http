@@ -1,4 +1,6 @@
-POST http://localhost:3000/clients HTTP/1.1
+### 1
+
+POST http://localhost:8080/clients HTTP/1.1
 Content-Type: application/json
 
 {
@@ -6,9 +8,18 @@ Content-Type: application/json
   "email": "u@u.com"
 }
 
-###
+### 2 - change client_id
 
-POST http://localhost:3000/clients HTTP/1.1
+POST http://localhost:8080/accounts HTTP/1.1
+Content-Type: application/json
+
+{
+  "client_id": "dcff3c4a-bac9-4d1a-9b4a-21436f8c1714"
+}
+
+### 3
+
+POST http://localhost:8080/clients HTTP/1.1
 Content-Type: application/json
 
 {
@@ -16,22 +27,22 @@ Content-Type: application/json
   "email": "l@l.com"
 }
 
-###
+### 4 - change client_id
 
-POST http://localhost:3000/accounts HTTP/1.1
+POST http://localhost:8080/accounts HTTP/1.1
 Content-Type: application/json
 
 {
-  "client_id": "5bce7c5e-2f6a-4403-a165-2a2dec15baa8"
+  "client_id": "084f2cf4-368e-4b34-a9c9-e341aaa68a48"
 }
 
-###
+### 5 - change account_id_from and account_id_to
 
 POST http://localhost:8080/transactions HTTP/1.1
 Content-Type: application/json
 
 {
-  "account_id_from": "33396f9d-f2a6-4d91-a453-a3b8980fdcf1",
-  "account_id_to": "24a9de31-cc13-4380-a20b-9696bb961052",
+  "account_id_from": "504d93c4-8f4b-4774-a227-bf6a6e02c6ab",
+  "account_id_to": "acd9eb22-27f7-4c8a-89d0-a1ec618d436e",
   "amount": 1
 }
