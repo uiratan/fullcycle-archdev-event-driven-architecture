@@ -113,6 +113,7 @@ ctrl + shift + p
 
 ![alt text](image-1.png)
 
+
 # Desafio
 Desenvolva um microsserviço que seja capaz de receber via Kafka os eventos gerados pelo microsserviço "Wallet Core" e persistir no banco de dados os balances atualizados para cada conta.
 
