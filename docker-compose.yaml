@@ -7,7 +7,6 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./scripts:/docker-entrypoint-initdb.d
       - .docker/mysql:/var/lib/mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
