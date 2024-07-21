@@ -20,7 +20,7 @@ import (
 )
 
 func main() {
-	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/wallet?charset=utf8&parseTime=True&loc=Local")
+	db, err := sql.Open("mysql", "root:@tcp(mysql:3306)/wallet?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err)
 	}
@@ -61,7 +61,7 @@ func main() {
 	createClientUseCase := create_client.NewCreateClientUseCase(clientDb)
 	createAccountUseCase := create_account.NewCreateAccountUseCase(accountDb, clientDb)
 
-	webserver := webserver.NewWebServer(":3000")
+	webserver := webserver.NewWebServer(":8080")
 
 	clientHandler := web.NewWebClientHandler(*createClientUseCase)
 	accountHandler := web.NewWebAccountHandler(*createAccountUseCase)
