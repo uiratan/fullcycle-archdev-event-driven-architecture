@@ -145,6 +145,12 @@ go run cmd/walletcore/main.go
 
 As tabelas serão criadas e populadas e a aplicação estará rodando na porta `8080`.
 
+Para acessar o banco de dados
+```sh
+docker compose exec mysql-wallet bash
+mysql -uroot -p wallet
+```
+
 ### Microsserviço balances
 
 Acessar o container
@@ -159,6 +165,12 @@ go run cmd/balances/main.go
 ```
 
 As tabelas serão criadas e populadas e a aplicação estará rodando na porta `3003`.
+
+Para acessar o banco de dados
+```sh
+docker compose exec mysql-balance bash
+mysql -uroot -p balances
+```
 
 ### Requisições
 Os dois serviços já tem seu arquivo de `api/client.http` já com os `IDs` corretos, mas nada impede te criar novos registros e usar os mesmos.
