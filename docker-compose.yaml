@@ -9,8 +9,9 @@ services:
     volumes:
       - .docker/mysql:/var/lib/mysql
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=wallet
+      - MYSQL_PASSWORD=root
     networks:
       - app-network
     ports:

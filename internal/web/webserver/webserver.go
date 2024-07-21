@@ -31,6 +31,6 @@ func (s *WebServer) Start() {
 	for path, handler := range s.Handlers {
 		s.Router.Post(path, handler)
 	}
+	fmt.Println("Server running on port ", s.WebServerPort)
 	http.ListenAndServe(s.WebServerPort, s.Router)
-	fmt.Println("Server running on port", s.WebServerPort)
 }
