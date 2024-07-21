@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/entity"
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/usecase/mocks"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/usecase/mocks"
 )
 
 func TestFindAccountUseCase_Execute(t *testing.T) {

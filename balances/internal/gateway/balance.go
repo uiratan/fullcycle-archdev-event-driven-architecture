@@ -1,6 +1,6 @@
 package gateway
 
-import "github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/entity"
+import "github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/entity"
 
 type BalanceGateway interface {
 	Save(balance *entity.Balance) error

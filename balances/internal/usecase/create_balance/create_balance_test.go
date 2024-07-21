@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/usecase/mocks"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/usecase/mocks"
 )
 
 func TestCreateBalanceUseCase_Execute(t *testing.T) {

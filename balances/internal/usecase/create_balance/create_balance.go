@@ -3,8 +3,8 @@ package create_balance
 import (
 	"time"
 
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/entity"
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/gateway"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/gateway"
 )
 
 type CreateBalanceInputDTO struct {

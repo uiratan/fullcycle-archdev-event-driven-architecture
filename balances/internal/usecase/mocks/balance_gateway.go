@@ -2,7 +2,7 @@ package mocks
 
 import (
 	"github.com/stretchr/testify/mock"
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/entity"
 )
 
 type BalanceGatewayMock struct {

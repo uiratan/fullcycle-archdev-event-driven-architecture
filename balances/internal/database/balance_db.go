@@ -3,7 +3,7 @@ package database
 import (
 	"database/sql"
 
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/entity"
 )
 
 type BalanceDB struct {

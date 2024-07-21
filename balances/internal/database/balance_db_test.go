@@ -6,7 +6,7 @@ import (
 
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/suite"
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/entity"
 )
 
 type BalanceDBTestSuite struct {

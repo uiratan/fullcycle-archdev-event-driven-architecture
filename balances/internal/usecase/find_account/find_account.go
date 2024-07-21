@@ -3,7 +3,7 @@ package find_account
 import (
 	"time"
 
-	"github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances/internal/gateway"
+	"github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances/internal/gateway"
 )
 
 type FindAccountInputDTO struct {

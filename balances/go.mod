@@ -1,8 +1,9 @@
-module github.com/uiratan/fullcycle-archdev-event-driven-architecture-utils/balances
+module github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances
 
 go 1.22.5
 
 require (
+	github.com/go-chi/chi v1.5.5
 	github.com/google/uuid v1.6.0
 	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/stretchr/testify v1.9.0
