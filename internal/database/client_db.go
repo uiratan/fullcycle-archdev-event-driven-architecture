@@ -2,6 +2,7 @@ package database
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
 )
@@ -25,6 +26,8 @@ func (c *ClientDB) Get(id string) (*entity.Client, error) {
 	defer stmt.Close()
 	row := stmt.QueryRow(id)
 	if err := row.Scan(&client.ID, &client.Name, &client.Email, &client.CreatedAt); err != nil {
+		fmt.Println(err)
+		fmt.Println(row.Err())
 		return nil, err
 	}
 	return client, nil
