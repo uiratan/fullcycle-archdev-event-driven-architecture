@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -12,10 +13,10 @@ import (
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/web"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/web/webserver"
 	"github.com/uiratan/fullcycle-archdev-microservices/pkg/events"
+	"github.com/uiratan/fullcycle-archdev-microservices/pkg/uow"
 )
 
 func main() {
-	// db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", "root", "root", "mysql", "3306", "wallet"))
 	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/wallet?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err)
@@ -28,11 +29,21 @@ func main() {
 
 	clientDb := database.NewClientDB(db)
 	accountDb := database.NewAccountDB(db)
-	transactionDb := database.NewTransactionDB(db)
 
+	ctx := context.Background()
+	uow := uow.NewUow(ctx, db)
+
+	uow.Register("AccountDB", func(tx *sql.Tx) interface{} {
+		return database.NewAccountDB(db)
+	})
+
+	uow.Register("TransactionDB", func(tx *sql.Tx) interface{} {
+		return database.NewTransactionDB(db)
+	})
+
+	createTransactionUseCase := create_transaction.NewCreateTransactionUseCase(uow, eventDispatcher, transactionCreatedEvent)
 	createClientUseCase := create_client.NewCreateClientUseCase(clientDb)
 	createAccountUseCase := create_account.NewCreateAccountUseCase(accountDb, clientDb)
-	createTransactionUseCase := create_transaction.NewCreateTransactionUseCase(transactionDb, accountDb, eventDispatcher, transactionCreatedEvent)
 
 	webserver := webserver.NewWebServer(":3000")
 
