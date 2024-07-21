@@ -11,6 +11,17 @@ services:
     ports:
       - 8080:8080
 
+  app-balances:
+    build: .
+    container_name: app-balances
+    platform: linux/amd64
+    volumes:
+      - ./balances:/app
+    depends_on:
+      - mysql-balance
+    ports:
+      - 3003:3003
+
   mysql-wallet:
     image: mysql:8
     platform: linux/amd64
@@ -25,17 +36,6 @@ services:
     ports:
       - "3306:3306"
 
-  app-balances:
-    build: .
-    container_name: app-balances
-    platform: linux/amd64
-    volumes:
-      - ./balances:/app
-    depends_on:
-      - mysql-balance
-    ports:
-      - 3003:3003
-
   mysql-balance:
     image: mysql:8
     platform: linux/amd64
@@ -45,7 +45,7 @@ services:
     tty: true
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=wallet
+      - MYSQL_DATABASE=balances
       - MYSQL_PASSWORD=root
     ports:
       - "3307:3306"  
