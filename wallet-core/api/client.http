@@ -1,4 +1,16 @@
-### 1
+### transaction test with previous populated dabase
+
+POST http://localhost:8080/transactions HTTP/1.1
+Content-Type: application/json
+
+{
+  "account_id_from": "372b5874-252a-48ac-80d6-d9c4c2f10114",
+  "account_id_to": "6b76d113-257a-4942-93fd-d97c42491dac",
+  "amount": 100
+}
+
+
+### 1 create client
 
 POST http://localhost:8080/clients HTTP/1.1
 Content-Type: application/json
@@ -8,41 +20,24 @@ Content-Type: application/json
   "email": "u@u.com"
 }
 
-### 2 - change client_id
+### 2 - create account - change client_id with request 1 response
 
 POST http://localhost:8080/accounts HTTP/1.1
 Content-Type: application/json
 
 {
-  "client_id": "dcff3c4a-bac9-4d1a-9b4a-21436f8c1714"
+  "client_id": ""
 }
 
-### 3
 
-POST http://localhost:8080/clients HTTP/1.1
-Content-Type: application/json
-
-{
-  "name": "Liana",
-  "email": "l@l.com"
-}
-
-### 4 - change client_id
-
-POST http://localhost:8080/accounts HTTP/1.1
-Content-Type: application/json
-
-{
-  "client_id": "084f2cf4-368e-4b34-a9c9-e341aaa68a48"
-}
-
-### 5 - change account_id_from and account_id_to
+### 5 - change account_id_to with request 2 response
 
 POST http://localhost:8080/transactions HTTP/1.1
 Content-Type: application/json
 
 {
-  "account_id_from": "504d93c4-8f4b-4774-a227-bf6a6e02c6ab",
-  "account_id_to": "acd9eb22-27f7-4c8a-89d0-a1ec618d436e",
-  "amount": 1
+  "account_id_from": "372b5874-252a-48ac-80d6-d9c4c2f10114",
+  "account_id_to": "",
+  "amount": 100
 }
+
