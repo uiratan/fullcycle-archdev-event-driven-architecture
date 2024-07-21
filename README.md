@@ -64,7 +64,7 @@ https://go.dev/doc/install
 
 ### Init project
 ```sh
-go mod init github.com/uiratan/fullcycle-archdev-microservices
+go mod init github.com/uiratan/fullcycle-archdev-microservices/wallet-core
 ```
 
 ### Dependencies
