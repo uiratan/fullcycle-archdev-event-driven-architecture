@@ -17,6 +17,7 @@ func TestCreateBalanceUseCase_Execute(t *testing.T) {
 		AccountID: "c76a8e3b-21a7-439b-956f-cf37ee44d424",
 		Balance:   100.00,
 	}
+
 	output, err := uc.Execute(inputDto)
 	assert.Nil(t, err)
 	assert.NotNil(t, output.ID)

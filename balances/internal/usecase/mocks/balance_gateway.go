@@ -19,10 +19,10 @@ func (m *BalanceGatewayMock) FindByAccountID(accountId string) (*entity.Balance,
 	return args.Get(0).(*entity.Balance), args.Error(1)
 }
 
-func (m *BalanceGatewayMock) FindByID(id string) (*entity.Balance, error) {
-	args := m.Called(id)
-	return args.Get(0).(*entity.Balance), args.Error(1)
-}
+// func (m *BalanceGatewayMock) FindByID(id string) (*entity.Balance, error) {
+// 	args := m.Called(id)
+// 	return args.Get(0).(*entity.Balance), args.Error(1)
+// }
 
 func (m *BalanceGatewayMock) Update(balance *entity.Balance) error {
 	args := m.Called(balance)
