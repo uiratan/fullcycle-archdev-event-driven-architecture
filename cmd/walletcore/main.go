@@ -4,15 +4,18 @@ import (
 	"context"
 	"database/sql"
 
+	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/database"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/event"
+	"github.com/uiratan/fullcycle-archdev-microservices/internal/event/handler"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/usecase/create_account"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/usecase/create_client"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/usecase/create_transaction"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/web"
 	"github.com/uiratan/fullcycle-archdev-microservices/internal/web/webserver"
 	"github.com/uiratan/fullcycle-archdev-microservices/pkg/events"
+	"github.com/uiratan/fullcycle-archdev-microservices/pkg/kafka"
 	"github.com/uiratan/fullcycle-archdev-microservices/pkg/uow"
 )
 
@@ -23,9 +26,22 @@ func main() {
 	}
 	defer db.Close()
 
+	configMap := ckafka.ConfigMap{
+		"bootstrap.servers": "kafka:29092",
+		"group.id":          "wallet",
+	}
+	kafkaProducer := kafka.NewKafkaProducer(&configMap)
+
+	// eventDispatcher := events.NewEventDispatcher()
+	// eventDispatcher.Register("TransactionCreated", handler.NewTransactionCreatedKafkaHandler(kafkaProducer))
+	// eventDispatcher.Register("BalanceUpdated", handler.NewUpdateBalanceKafkaHandler(kafkaProducer))
+	// transactionCreatedEvent := event.NewTransactionCreated()
+	// balanceUpdatedEvent := event.NewBalanceUpdated()
+
 	eventDispatcher := events.NewEventDispatcher()
+	eventDispatcher.Register("TransactionCreated", handler.NewTransactionCreatedKafkaHandler(kafkaProducer))
+
 	transactionCreatedEvent := event.NewTransactionCreated()
-	// eventDispatcher.Register("TransactionCreated", handler)
 
 	clientDb := database.NewClientDB(db)
 	accountDb := database.NewAccountDB(db)
