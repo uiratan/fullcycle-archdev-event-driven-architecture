@@ -1,8 +1,8 @@
 services:
 
-  wallet-core:
+  app-wallet-core:
     build: .
-    container_name: wallet-core
+    container_name: app-wallet-core
     platform: linux/amd64
     volumes:
       - ./wallet-core:/app
@@ -24,6 +24,31 @@ services:
       - MYSQL_PASSWORD=root
     ports:
       - "3306:3306"
+
+  app-balance:
+    build: .
+    container_name: app-balance
+    platform: linux/amd64
+    volumes:
+      - ./balance:/app
+    depends_on:
+      - mysql-balance
+    ports:
+      - 3003:3003
+
+  mysql-balance:
+    image: mysql:8
+    platform: linux/amd64
+    command: --innodb-use-native-aio=0
+    container_name: mysql-balance
+    restart: always
+    tty: true
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=wallet
+      - MYSQL_PASSWORD=root
+    ports:
+      - "3307:3306"  
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
