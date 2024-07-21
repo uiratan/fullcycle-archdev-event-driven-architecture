@@ -1,8 +1,8 @@
 package create_account
 
 import (
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/gateway"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/gateway"
 )
 
 type CreateAccountInputDTO struct {

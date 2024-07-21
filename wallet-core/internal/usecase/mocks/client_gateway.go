@@ -2,7 +2,7 @@ package mocks
 
 import (
 	"github.com/stretchr/testify/mock"
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
 )
 
 type ClientGatewayMock struct {

@@ -3,8 +3,8 @@ package create_client
 import (
 	"time"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/gateway"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/gateway"
 )
 
 type CreateClientInputDTO struct {

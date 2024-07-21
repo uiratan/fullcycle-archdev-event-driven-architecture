@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/suite"
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
 )
 
 type TransactionDBTestSuite struct {

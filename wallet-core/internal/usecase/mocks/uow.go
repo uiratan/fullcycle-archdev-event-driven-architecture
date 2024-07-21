@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/stretchr/testify/mock"
-	"github.com/uiratan/fullcycle-archdev-microservices/pkg/uow"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/pkg/uow"
 )
 
 type UowMock struct {

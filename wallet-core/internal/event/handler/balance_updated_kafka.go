@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/pkg/events"
-	"github.com/uiratan/fullcycle-archdev-microservices/pkg/kafka"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/pkg/events"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/pkg/kafka"
 )
 
 type UpdateBalanceKafkaHandler struct {

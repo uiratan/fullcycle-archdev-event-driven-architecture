@@ -1,4 +1,4 @@
-module github.com/uiratan/fullcycle-archdev-microservices
+module github.com/uiratan/fullcycle-archdev-microservices/wallet-core
 
 go 1.22.5
 

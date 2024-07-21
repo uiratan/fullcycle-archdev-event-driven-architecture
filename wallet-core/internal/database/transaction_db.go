@@ -3,7 +3,7 @@ package database
 import (
 	"database/sql"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
 )
 
 type TransactionDB struct {

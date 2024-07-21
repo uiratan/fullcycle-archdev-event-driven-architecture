@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/usecase/mocks"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/usecase/mocks"
 )
 
 func TestCreateClientUseCase_Execute(t *testing.T) {

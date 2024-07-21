@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/usecase/create_account"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/usecase/create_account"
 )
 
 type WebAccountHandler struct {

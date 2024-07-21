@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/usecase/create_client"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/usecase/create_client"
 )
 
 type WebClientHandler struct {

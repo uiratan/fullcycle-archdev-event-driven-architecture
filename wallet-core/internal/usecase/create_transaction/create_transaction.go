@@ -3,10 +3,10 @@ package create_transaction
 import (
 	"context"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/gateway"
-	"github.com/uiratan/fullcycle-archdev-microservices/pkg/events"
-	"github.com/uiratan/fullcycle-archdev-microservices/pkg/uow"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/gateway"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/pkg/events"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/pkg/uow"
 )
 
 type CreateTransactionInputDTO struct {

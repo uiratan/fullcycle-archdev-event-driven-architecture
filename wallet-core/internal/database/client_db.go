@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/uiratan/fullcycle-archdev-microservices/internal/entity"
+	"github.com/uiratan/fullcycle-archdev-microservices/wallet-core/internal/entity"
 )
 
 type ClientDB struct {
