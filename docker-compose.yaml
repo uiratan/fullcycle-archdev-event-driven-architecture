@@ -6,8 +6,10 @@ services:
     platform: linux/amd64
     volumes:
       - ./wallet-core:/app
+    entrypoint: ["sh", "-c", "until mysqladmin ping -h mysql-wallet; do echo 'Waiting for MySQL...'; sleep 2;  done; go run cmd/walletcore/main.go"]
     depends_on:
-      - mysql-wallet
+      mysql-wallet:
+        condition: service_healthy
     ports:
       - 8080:8080
 
@@ -17,8 +19,10 @@ services:
     platform: linux/amd64
     volumes:
       - ./balances:/app
+    entrypoint: ["sh", "-c", "until mysqladmin ping -h mysql-balance; do echo 'Waiting for MySQL...'; sleep 2; done; go run cmd/balances/main.go"]
     depends_on:
-      - mysql-balance
+      mysql-balance:
+        condition: service_healthy
     ports:
       - 3003:3003
 
@@ -35,6 +39,13 @@ services:
       - MYSQL_PASSWORD=root
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
 
   mysql-balance:
     image: mysql:8
@@ -48,7 +59,13 @@ services:
       - MYSQL_DATABASE=balances
       - MYSQL_PASSWORD=root
     ports:
-      - "3307:3306"  
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
@@ -67,9 +84,6 @@ services:
     depends_on:
       - zookeeper
     ports:
-    # Exposes 9092 for external connections to the broker
-    # Use kafka:29092 for connections internal on the docker network
-    # See https://rmoff.net/2018/08/02/kafka-listeners-explained/ for details
       - '9092:9092'
     environment:
       TZ: Sao_Paulo/Brazil
