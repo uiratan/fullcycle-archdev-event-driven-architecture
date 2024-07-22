@@ -1,17 +1,23 @@
-# Executando aplicações e testes
+[Repositório original do Curso](https://github.com/devfullcycle/fc-eda/tree/main)
 
-1. Subir o ambiente: na pasta do projeto executar
+# Executando as aplicações
+As aplicações serão automaticamente automaticamente ao ambiente. Para isso, na pasta do projeto executar:
 ```sh
 docker compose up --build
 ```
 
-2. Testes
+
+# Testes
 Os dois serviços possuem um arquivo `api/client.http` já com os `IDs` populados no banco para testes.
 
+* Endpoints da aplicação wallet-core
+  - POST http://localhost:8080/clients
+  - POST http://localhost:8080/accounts
+  - POST http://localhost:8080/transactions
 
+* Endpoints da aplicação balances
+  - GET http://localhost:3003/balances/{account-id}
 
-
-[Repositório do Curso](https://github.com/devfullcycle/fc-eda/tree/main)
 # Eventos
 - Evento (carregar dados)
 - Operações que serão executadas quando um evento é chamado
