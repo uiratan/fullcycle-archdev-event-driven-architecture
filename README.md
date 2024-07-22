@@ -1,3 +1,16 @@
+# Executando aplicações e testes
+
+1. Subir o ambiente: na pasta do projeto executar
+```sh
+docker compose up --build
+```
+
+2. Testes
+Os dois serviços possuem um arquivo `api/client.http` já com os `IDs` populados no banco para testes.
+
+
+
+
 [Repositório do Curso](https://github.com/devfullcycle/fc-eda/tree/main)
 # Eventos
 - Evento (carregar dados)
