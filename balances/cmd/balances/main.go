@@ -27,7 +27,8 @@ type BalanceData struct {
 }
 
 func main() {
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local", "root", "root", "mysql-balance", "3306", "balances"))
+	print("Starting server...")
+	db, err := sql.Open("mysql", "root:root@tcp(mysql-balance:3306)/balances?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err)
 	}
@@ -86,7 +87,9 @@ func main() {
 			}
 			createBalanceUseCase.Execute(input)
 		}
-		c.CommitMessage(msg)
+		if msg != nil {
+			c.CommitMessage(msg)
+		}
 	}
 
 }

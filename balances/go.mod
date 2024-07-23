@@ -1,12 +1,12 @@
 module github.com/uiratan/fullcycle-archdev-event-driven-architecture/balances
 
-go 1.22.5
+go 1.19
 
 require (
 	github.com/confluentinc/confluent-kafka-go v1.9.2
-	github.com/go-chi/chi v1.5.5
+	github.com/go-chi/chi v1.5.4
 	github.com/go-sql-driver/mysql v1.8.1
-	github.com/google/uuid v1.6.0
+	github.com/google/uuid v1.3.0
 	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/stretchr/testify v1.9.0
 )
